@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Terminsystem1</string>
+    <string name="ta_appointment_system">TAÜ Appointment System</string>
+    <string name="academic_login">academic login</string>
+    <string name="student_login">student login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="change_password">change password</string>
+    <string name="title_activity_login_s">LoginActivityS</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="pick_a_date">pick a date</string>
+    <string name="faculty">Faculty:</string>
+    <string name="department">Department:</string>
+    <string name="academic">Academic:</string>
+    <string name="date">Date:</string>
+    <string name="check">Check</string>
+</resources>
