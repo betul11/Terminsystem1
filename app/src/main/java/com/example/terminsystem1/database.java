@@ -1,8 +1,10 @@
 package com.example.terminsystem1;
-import com.example.terminsystem1.ui.Const;
-import com.example.terminsystem1.ui.student;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 public class database {
     Connection dbConnection;
 
