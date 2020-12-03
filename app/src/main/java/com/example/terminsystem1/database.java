@@ -1,8 +1,13 @@
 package com.example.terminsystem1;
-import com.example.terminsystem1.ui.Const;
-import com.example.terminsystem1.ui.student;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class database {
     Connection dbConnection;
 
@@ -20,7 +25,7 @@ public class database {
         dbConnection = DriverManager.getConnection(connectionString,dbUser,dbPass);
         return dbConnection;
     }
-
+/*
     public ResultSet getStudent (student user){
         ResultSet resultSet = null;
         if(!user.getEmail().equals("")){
@@ -44,27 +49,20 @@ public class database {
         }
 
         return resultSet;
-    }
+    }*/
 
 
-    /*public ObservableList<user> getAllOperators() throws SQLException, ClassNotFoundException {
-        String query = "SELECT * FROM "+ Const.USERS_TABLE+ " WHERE level = 1 OR level = 2";
+    public List<String> getAllFaculties() throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM "+ Const.FACULTY_TABLE + " ";
         PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
         ResultSet resultSet = preparedStatement.executeQuery();
-        ObservableList<user> operators = FXCollections.observableArrayList();
+        List<String> faculties = new ArrayList<>();
         while(resultSet.next()){
-            operators.add(new user(
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4),
-                    resultSet.getString(5),
-                    resultSet.getString(6),
-                    resultSet.getString(7)
-            ));
+            faculties.add(resultSet.getString(Const.FACULTY_NAME));
         }
 
-        return operators;
-    }*/
+        return faculties;
+    }
 
 
 
