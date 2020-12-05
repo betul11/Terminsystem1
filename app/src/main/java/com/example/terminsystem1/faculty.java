@@ -16,4 +16,11 @@ public class faculty {
     public faculty(String facultyName) {
         this.facultyName = facultyName;
     }
+
+    public void openDepartments (String department){
+        facultyName = department;
+
+    }
+
+
 }

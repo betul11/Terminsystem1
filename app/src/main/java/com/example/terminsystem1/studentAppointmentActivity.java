@@ -21,7 +21,7 @@ import java.util.List;
 
 public class studentAppointmentActivity extends AppCompatActivity {
     RecyclerView facultiesRecycler;
-    RecyclerView.Adapter facultyAdapter;
+    facultyAdapter facultyAdapter;
     RecyclerView.LayoutManager facultyLayoutManager;
 
     @Override
@@ -54,34 +54,18 @@ public class studentAppointmentActivity extends AppCompatActivity {
 
         facultiesRecycler.setLayoutManager(facultyLayoutManager);
         facultiesRecycler.setAdapter(facultyAdapter);
+        ArrayList<faculty> finalFaculties = faculties;
+        facultyAdapter.setOnItemClickListener(new facultyAdapter.onItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
 
 
-/*
-        //faculty listener
-        facultySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            public void onItemSelected(AdapterView<String> parent, View view, int position, long id)
-            {
-                String selectedItem = parent.getItemAtPosition(position).toString();
+                finalFaculties.get(position).openDepartments("department1");
+                facultyAdapter.notifyItemChanged(position);
+            }
+        });
 
 
-            } // to close the onItemSelected
-
-        }); */
-
-
-/*
-
-
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.planets_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        facultySpinner.setAdapter(adapter);
-
-*/
 
     }
 }
