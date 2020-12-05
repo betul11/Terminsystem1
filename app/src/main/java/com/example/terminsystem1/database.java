@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class database {
@@ -24,6 +25,9 @@ public class database {
 
         dbConnection = DriverManager.getConnection(connectionString,dbUser,dbPass);
         return dbConnection;
+    }
+
+    public database() {
     }
 /*
     public ResultSet getStudent (student user){
@@ -52,13 +56,13 @@ public class database {
     }*/
 
 
-    public List<String> getAllFaculties() throws SQLException, ClassNotFoundException {
-        String query = "SELECT * FROM "+ Const.FACULTY_TABLE + " ";
+    public ArrayList<faculty> getAllFaculties() throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM fakultaet";
         PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
         ResultSet resultSet = preparedStatement.executeQuery();
-        List<String> faculties = new ArrayList<>();
+        ArrayList<faculty> faculties = new ArrayList<>();
         while(resultSet.next()){
-            faculties.add(resultSet.getString(Const.FACULTY_NAME));
+            faculties.add(new faculty(resultSet.getString(Const.FACULTY_NAME)))  ;
         }
 
         return faculties;

@@ -1,28 +1,45 @@
 package com.example.terminsystem1;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class studentAppointmentActivity extends AppCompatActivity {
+    RecyclerView facultiesRecycler;
+    RecyclerView.Adapter facultyAdapter;
+    RecyclerView.LayoutManager facultyLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_appointment);
-        Spinner facultySpinner = (Spinner) findViewById(R.id.facultySpinner);
-        Spinner departmentSpinner = (Spinner) findViewById(R.id.departmentSpinner);
-        Spinner academicSpinner = (Spinner) findViewById(R.id.academicSpinner);
-        TextView date = (TextView) findViewById(R.id.appointmentDate);
+
+        ArrayList<faculty> faculties = new ArrayList<>();
+        /*faculties.add(new faculty("faculty1"));
+        faculties.add(new faculty("faculty2"));
+        faculties.add(new faculty("faculty3"));
+        faculties.add(new faculty("faculty4"));*/
+
+
+
         database db = new database();
-        List<String> faculties = null;
+
+
         try {
             faculties = db.getAllFaculties();
         } catch (SQLException throwables) {
@@ -30,13 +47,28 @@ public class studentAppointmentActivity extends AppCompatActivity {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        facultiesRecycler = findViewById(R.id.searchAppointmentRecycler);
+        facultiesRecycler.setHasFixedSize(true);
+        facultyLayoutManager = new LinearLayoutManager(this);
+        facultyAdapter = new facultyAdapter(faculties);
+
+        facultiesRecycler.setLayoutManager(facultyLayoutManager);
+        facultiesRecycler.setAdapter(facultyAdapter);
 
 
-        ArrayAdapter<String> facultyAdapter= new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item,faculties);
+/*
+        //faculty listener
+        facultySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            public void onItemSelected(AdapterView<String> parent, View view, int position, long id)
+            {
+                String selectedItem = parent.getItemAtPosition(position).toString();
 
-        facultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        facultySpinner.setAdapter(facultyAdapter);
+
+            } // to close the onItemSelected
+
+        }); */
+
 
 /*
 

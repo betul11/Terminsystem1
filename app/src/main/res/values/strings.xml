@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Terminsystem1</string>
+    <string name="app_name">Terminsystem</string>
     <string name="ta_appointment_system">TAÜ Appointment System</string>
     <string name="academic_login">academic login</string>
     <string name="student_login">student login</string>
@@ -22,4 +22,14 @@
     <string name="academic">Academic:</string>
     <string name="date">Date:</string>
     <string name="check">Check</string>
+    <string name="cancel_termin" />
+    <string name="password_settings" />
+    <string name="termin_list" />
+    <string name="termin_request" />
+    <string name="terminsystem3" />
+    <string name="Studentpassword_settings" />
+    <string name="Studenttermin_list" />
+    <string name="termin_create" />
+    <string name="terminsystem2" />
+    <string-array name="faculties" />
 </resources>
