@@ -23,6 +23,7 @@ public class studentAppointmentActivity extends AppCompatActivity {
     RecyclerView facultiesRecycler;
     facultyAdapter facultyAdapter;
     RecyclerView.LayoutManager facultyLayoutManager;
+    database db = new database();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +31,6 @@ public class studentAppointmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student_appointment);
 
         ArrayList<faculty> faculties = new ArrayList<>();
-        /*faculties.add(new faculty("faculty1"));
-        faculties.add(new faculty("faculty2"));
-        faculties.add(new faculty("faculty3"));
-        faculties.add(new faculty("faculty4"));*/
-
-
-
-        database db = new database();
 
 
         try {
@@ -47,6 +40,8 @@ public class studentAppointmentActivity extends AppCompatActivity {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        //faculty list
         facultiesRecycler = findViewById(R.id.searchAppointmentRecycler);
         facultiesRecycler.setHasFixedSize(true);
         facultyLayoutManager = new LinearLayoutManager(this);
@@ -54,13 +49,17 @@ public class studentAppointmentActivity extends AppCompatActivity {
 
         facultiesRecycler.setLayoutManager(facultyLayoutManager);
         facultiesRecycler.setAdapter(facultyAdapter);
+       // ArrayList<faculty> finalFaculties = faculties;
         ArrayList<faculty> finalFaculties = faculties;
         facultyAdapter.setOnItemClickListener(new facultyAdapter.onItemClickListener() {
             @Override
-            public void onItemClick(int position) {
+            public void onItemClick(int position) throws SQLException {
+                ArrayList<department> departments = new ArrayList<>();
+
+                departments = db.getRelevantDepartment(finalFaculties.get(position).getFacultyID());
 
 
-                finalFaculties.get(position).openDepartments("department1");
+               // faculties.get(position).openDepartments("department1");
                 facultyAdapter.notifyItemChanged(position);
             }
         });

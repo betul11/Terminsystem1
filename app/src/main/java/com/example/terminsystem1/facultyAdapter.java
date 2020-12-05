@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -15,7 +16,7 @@ public class facultyAdapter extends RecyclerView.Adapter <facultyAdapter.faculty
    private ArrayList<faculty> facultyArrayList;
    private onItemClickListener facultyListener;
    public interface onItemClickListener{
-       void onItemClick (int position);
+       void onItemClick (int position) throws SQLException;
    }
    public void setOnItemClickListener (onItemClickListener listener){
        facultyListener = listener;
@@ -32,7 +33,11 @@ public class facultyAdapter extends RecyclerView.Adapter <facultyAdapter.faculty
                     if (listener != null){
                         int position = getAdapterPosition();
                         if(position!= RecyclerView.NO_POSITION){
-                            listener.onItemClick(position);
+                            try {
+                                listener.onItemClick(position);
+                            } catch (SQLException throwables) {
+                                throwables.printStackTrace();
+                            }
                         }
                     }
                 }

@@ -6,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 public class database {
     Connection dbConnection;
@@ -29,6 +27,27 @@ public class database {
 
     public database() {
     }
+
+    public ArrayList<department> getRelevantDepartment(int facultyId) throws SQLException {
+        String query = "SELECT * FROM "+ Const.DEPARTMENTS_TABLE+ " WHERE " + Const.FACULTY_ID+ "= ?";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = getDbConnection().prepareStatement(query);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        preparedStatement.setInt(1, facultyId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+
+
+        return null;
+    }
+
 /*
     public ResultSet getStudent (student user){
         ResultSet resultSet = null;
@@ -62,7 +81,7 @@ public class database {
         ResultSet resultSet = preparedStatement.executeQuery();
         ArrayList<faculty> faculties = new ArrayList<>();
         while(resultSet.next()){
-            faculties.add(new faculty(resultSet.getString(Const.FACULTY_NAME)))  ;
+            faculties.add(new faculty(resultSet.getInt(Const.FACULTY_ID),resultSet.getString(Const.FACULTY_NAME)))  ;
         }
 
         return faculties;
