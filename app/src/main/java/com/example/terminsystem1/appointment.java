@@ -1,5 +1,6 @@
 package com.example.terminsystem1;
 
+import java.sql.Date;
 import java.text.DateFormat;
 
 public class appointment {
@@ -7,9 +8,21 @@ public class appointment {
     private int appointmentID;
     private int appointmentAcademicID ;
     private int appointmentStudentID ;
+
+
     private  String appointmentStatus;
-    private DateFormat appointmentDate;
+    private Date appointmentDate;
     private int appointmentTime;
+
+    public appointment(int appointmentID, int appointmentAcademicID, int appointmentStudentID,
+                       String appointmentStatus, Date appointmentDate, int appointmentTime) {
+        this.appointmentID = appointmentID;
+        this.appointmentAcademicID = appointmentAcademicID;
+        this.appointmentStudentID = appointmentStudentID;
+        this.appointmentStatus = appointmentStatus;
+        this.appointmentDate = appointmentDate;
+        this.appointmentTime = appointmentTime;
+    }
 
     public int getAppointmentID() {
         return appointmentID;
@@ -43,11 +56,11 @@ public class appointment {
         this.appointmentStatus = appointmentStatus;
     }
 
-    public DateFormat getAppointmentDate() {
+    public Date getAppointmentDate() {
         return appointmentDate;
     }
 
-    public void setAppointmentDate(DateFormat appointmentDate) {
+    public void setAppointmentDate(Date appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
 

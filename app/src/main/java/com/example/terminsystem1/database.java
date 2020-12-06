@@ -114,6 +114,30 @@ public class database {
         return academics;
     }
 
+    public ArrayList<appointment> getStudentAppointments(int studentID) throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM "+Const.APPOINTMENTS_TABLE+ " WHERE "+ Const.APPOINTMENT_STUDENT_ID+
+                    " = ?";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setInt(1, studentID);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        ArrayList<appointment> studentAppointments = new ArrayList<>();
+
+       while(resultSet.next()){
+            studentAppointments.add(new appointment(resultSet.getInt(Const.APPOINTMENT_ID),
+                    resultSet.getInt(Const.APPOINTMENT_ACADEMIC_ID),
+                    resultSet.getInt(Const.APPOINTMENT_STUDENT_ID),
+                    resultSet.getString(Const.APPOINTMENT_STATUS),
+                     resultSet.getDate(Const.APPOINTMENT_DATE),
+                    resultSet.getInt(Const.APPOINTMENT_TIME)
+
+            )) ;
+        }
+
+
+
+        return studentAppointments;
+    }
+
     /*
     public ArrayList<appointment> getAvailableAppointments(int academicID, Date date) throws SQLException, ClassNotFoundException {
         String query = "SELECT * FROM "+ Const.ACADEMIC_TABLE+ " WHERE "+
