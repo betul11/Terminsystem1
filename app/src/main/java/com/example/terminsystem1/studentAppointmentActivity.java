@@ -88,7 +88,7 @@ public class studentAppointmentActivity extends AppCompatActivity {
                     public void onItemClick(int position) throws SQLException, ClassNotFoundException {
 
                         academics = db.getRelevantAcademic(departments.get(position).getDepartmentID());
-                        //departments list
+                        //academics list
 
                         academicRecycler = findViewById(R.id.searchAppointmentRecycler);
                         academicRecycler.setHasFixedSize(true);
@@ -96,10 +96,17 @@ public class studentAppointmentActivity extends AppCompatActivity {
                         academicAdapter = new academicAdapter(academics);
                         academicRecycler.setLayoutManager(academicLayoutManager);
                         academicRecycler.setAdapter(academicAdapter);
+                        academicAdapter.setOnItemClickListener(new academicAdapter.onItemClickListener() {
+                            @Override
+                            public void onItemClick(int position) throws SQLException, ClassNotFoundException {
 
 
-                        // faculties.get(position).openDepartments("department1");
-                        //departmentAdapter.notifyItemChanged(position);
+
+
+
+                            }
+                        });
+
                     }
                 });
 

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class database {
     Connection dbConnection;
@@ -112,4 +113,26 @@ public class database {
 
         return academics;
     }
+
+    /*
+    public ArrayList<appointment> getAvailableAppointments(int academicID, Date date) throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM "+ Const.ACADEMIC_TABLE+ " WHERE "+
+                Const.ACADEMIC_DEPARTMENT_ID+ " = ?";
+
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setInt(1, departmentID);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        ArrayList<academic> academics = new ArrayList<>();
+
+        while(resultSet.next()){
+            academics.add(new academic(resultSet.getInt(Const.ACADEMIC_ID),
+                    resultSet.getString(Const.ACADEMIC_NAME)
+            )) ;
+        }
+
+        return academics;
+    }*/
+
+
+
 }
