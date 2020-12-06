@@ -29,7 +29,7 @@ public class database {
     }
 
     public ArrayList<department> getRelevantDepartment(int facultyId) throws SQLException {
-        String query = "SELECT * FROM "+ Const.DEPARTMENTS_TABLE+ " WHERE " + Const.FACULTY_ID+ "= ?";
+        String query = "SELECT * FROM "+ Const.DEPARTMENTS_TABLE+ " WHERE " + Const.DEPARTMENT_FACULTY_ID + " = ?";
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = getDbConnection().prepareStatement(query);
@@ -42,10 +42,17 @@ public class database {
 
         preparedStatement.setInt(1, facultyId);
         ResultSet resultSet = preparedStatement.executeQuery();
+        ArrayList<department> departments = new ArrayList<>();
+
+        while(resultSet.next()){
+            departments.add(new department(resultSet.getInt(Const.DEPARTMENT_ID),
+                    resultSet.getString(Const.DEPARTMENT_NAME),
+                    resultSet.getInt(Const.DEPARTMENT_FACULTY_ID))) ;
+        }
 
 
 
-        return null;
+        return departments;
     }
 
 /*
@@ -88,6 +95,21 @@ public class database {
     }
 
 
+    public ArrayList<academic> getRelevantAcademic(int departmentID) throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM "+ Const.ACADEMIC_TABLE+ " WHERE "+
+                Const.ACADEMIC_DEPARTMENT_ID+ " = ?";
 
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setInt(1, departmentID);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        ArrayList<academic> academics = new ArrayList<>();
 
+        while(resultSet.next()){
+            academics.add(new academic(resultSet.getInt(Const.ACADEMIC_ID),
+                    resultSet.getString(Const.ACADEMIC_NAME)
+                    )) ;
+        }
+
+        return academics;
+    }
 }

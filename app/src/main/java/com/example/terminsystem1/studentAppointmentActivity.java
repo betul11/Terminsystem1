@@ -20,17 +20,33 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class studentAppointmentActivity extends AppCompatActivity {
+   //faculty
     RecyclerView facultiesRecycler;
     facultyAdapter facultyAdapter;
     RecyclerView.LayoutManager facultyLayoutManager;
+
+    //department
+    RecyclerView departmentsRecycler;
+    departmentAdapter departmentAdapter;
+    RecyclerView.LayoutManager departmentLayoutManager;
+
+    //academic
+    RecyclerView academicRecycler;
+    academicAdapter academicAdapter;
+    RecyclerView.LayoutManager academicLayoutManager;
+
     database db = new database();
+    ArrayList<department> departments = new ArrayList<department>();
+    ArrayList<faculty> faculties = new ArrayList<>();
+    ArrayList<academic> academics = new ArrayList<>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_appointment);
 
-        ArrayList<faculty> faculties = new ArrayList<>();
 
 
         try {
@@ -41,28 +57,62 @@ public class studentAppointmentActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //faculty list
+        //faculties list
         facultiesRecycler = findViewById(R.id.searchAppointmentRecycler);
-        facultiesRecycler.setHasFixedSize(true);
+       // facultiesRecycler.setHasFixedSize(true);
         facultyLayoutManager = new LinearLayoutManager(this);
         facultyAdapter = new facultyAdapter(faculties);
 
         facultiesRecycler.setLayoutManager(facultyLayoutManager);
         facultiesRecycler.setAdapter(facultyAdapter);
-       // ArrayList<faculty> finalFaculties = faculties;
-        ArrayList<faculty> finalFaculties = faculties;
+
         facultyAdapter.setOnItemClickListener(new facultyAdapter.onItemClickListener() {
             @Override
             public void onItemClick(int position) throws SQLException {
-                ArrayList<department> departments = new ArrayList<>();
 
-                departments = db.getRelevantDepartment(finalFaculties.get(position).getFacultyID());
+                departments = db.getRelevantDepartment(faculties.get(position).getFacultyID());
+                //departments list
+
+                departmentsRecycler = findViewById(R.id.searchAppointmentRecycler);
+                //departmentsRecycler.setHasFixedSize(true);
+                departmentLayoutManager = new LinearLayoutManager(getApplicationContext());
+                departmentAdapter = new departmentAdapter(departments);
+                departmentsRecycler.setLayoutManager(departmentLayoutManager);
+                departmentsRecycler.setAdapter(departmentAdapter);
 
 
                // faculties.get(position).openDepartments("department1");
-                facultyAdapter.notifyItemChanged(position);
+                //departmentAdapter.notifyItemChanged(position);
             }
         });
+
+        departmentAdapter.setOnItemClickListener(new departmentAdapter.onItemClickListener() {
+            @Override
+            public void onItemClick(int position) throws SQLException, ClassNotFoundException {
+                ArrayList<academic> academics = new ArrayList<academic>();
+
+                academics = db.getRelevantAcademic(departments.get(position).getDepartmentID());
+                //departments list
+
+                academicRecycler = findViewById(R.id.searchAppointmentRecycler);
+                academicRecycler.setHasFixedSize(true);
+                departmentLayoutManager = new LinearLayoutManager(getApplicationContext());
+                academicAdapter = new academicAdapter(academics);
+                academicRecycler.setLayoutManager(academicLayoutManager);
+                academicRecycler.setAdapter(academicAdapter);
+
+
+                // faculties.get(position).openDepartments("department1");
+                //departmentAdapter.notifyItemChanged(position);
+            }
+        });
+
+
+
+
+
+
+
 
 
 

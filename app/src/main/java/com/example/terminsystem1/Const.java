@@ -6,7 +6,7 @@ public class Const {
     public static final String ACADEMIC_TABLE = "akademiemitglied";
     public static final String FACULTY_TABLE = "fakultaet";
     public static final String APPOINTMENTS_TABLE = "termin";
-    public static final String DEPARTMENTS_TABLE = "students";
+    public static final String DEPARTMENTS_TABLE = "abteilung";
 
 
 
