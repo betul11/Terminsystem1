@@ -13,26 +13,26 @@
 
 
         <TextView
-            android:id="@+id/status"
+            android:id="@+id/student_appointment_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
 
-            android:layout_toRightOf="@+id/date"
+            android:layout_toRightOf="@+id/student_appointment_date"
             android:text="status"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/student_appointment_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="31dp"
-            android:layout_toRightOf="@+id/academicName"
+            android:layout_toRightOf="@+id/student_appointment_academicName"
             android:text="date"
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/academicName"
+            android:id="@+id/student_appointment_academicName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="academic name"
