@@ -31,5 +31,6 @@
     <string name="Studenttermin_list" />
     <string name="termin_create" />
     <string name="terminsystem2" />
+    <string name="student">Student</string>
     <string-array name="faculties" />
 </resources>

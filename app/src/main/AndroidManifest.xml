@@ -15,8 +15,6 @@
         <activity android:name=".studentAppointmentActivity" />
         <activity android:name=".StudentHomeScreenActivity" />
         <activity android:name=".AcademicHomeScreenActivity" />
-        <activity android:name=".academicLoginActivity" />
-        <activity android:name=".studentLoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

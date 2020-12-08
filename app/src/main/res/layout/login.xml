@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
+    tools:context=".MainActivity"
     >
 
     <TextView
@@ -44,14 +45,14 @@
         android:layout_width="336dp"
         android:layout_height="51dp"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="112dp"
         android:layout_marginEnd="38dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
@@ -60,7 +61,7 @@
         android:layout_width="336dp"
         android:layout_height="51dp"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="89dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="38dp"
         android:layout_marginBottom="315dp"
         android:autofillHints=""
@@ -75,14 +76,43 @@
         app:layout_constraintVertical_bias="0.033" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="36dp"
         android:text="@string/login"
         app:backgroundTint="#54AFBC"
+        android:onClick="login"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+    <RadioGroup
+        android:id="@+id/radioAcademicStudent"
+        android:layout_width="114dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="258dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/TextEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider">
+
+        <RadioButton
+            android:id="@+id/radioAcademic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/academic"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/radioStudent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/student" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

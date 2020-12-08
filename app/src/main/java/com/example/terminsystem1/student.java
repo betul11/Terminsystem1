@@ -10,7 +10,9 @@ public class student {
         private String password;
         private int abteilung_id;
 
-    public student() {
+    public student(String email, String password) {
+        this.Email = email;
+        this.password = password;
     }
 
     public int getStudent_id() {
