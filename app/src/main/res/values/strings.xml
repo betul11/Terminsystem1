@@ -33,4 +33,5 @@
     <string name="terminsystem2" />
     <string name="student">Student</string>
     <string-array name="faculties" />
+    <string name="title_activity_login_e_x_x_x">LoginActivityEXXX</string>
 </resources>

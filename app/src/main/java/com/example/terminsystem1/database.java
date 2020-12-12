@@ -1,5 +1,7 @@
 package com.example.terminsystem1;
 
+import android.os.AsyncTask;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class database {
+public class database extends AsyncTask<String,Void,String> {
     Connection dbConnection;
 
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
@@ -26,6 +28,11 @@ public class database {
     }
 
     public database() {
+    }
+
+    @Override
+    protected String doInBackground(String... strings) {
+        return null;
     }
 
     public ArrayList<department> getRelevantDepartment(int facultyId) throws SQLException {
@@ -56,7 +63,7 @@ public class database {
 
 
     public ResultSet studentLogin(student user) throws SQLException, ClassNotFoundException {
-
+        System.out.println("INSIDE DATABASE CLASS");
             String query = "SELECT * FROM " + Const.STUDENTS_TABLE + " WHERE " + Const.STUDENT_EMAIL + "= ? AND " +
                     Const.STUDENT_PASSWORD + "= ?";
 
