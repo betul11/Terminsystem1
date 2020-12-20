@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Terminsystem1"
         android:windowSoftInputMode="adjustNothing">
-        <activity android:name=".academicLoginActivity"></activity>
+        <activity android:name=".dateSendingActivity"></activity>
+        <activity android:name=".academicLoginActivity" />
         <activity android:name=".studentLoginActivity" />
         <activity android:name=".studentMyAppointmentsActivity" />
         <activity android:name=".studentAppointmentActivity" />

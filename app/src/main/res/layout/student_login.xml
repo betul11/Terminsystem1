@@ -25,6 +25,10 @@
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
+            android:backgroundTint="#d3d3d3"
+            android:textColor="@android:color/black"
+
+            android:inputType="textEmailAddress"
             android:hint="@string/email"
             />
         <EditText
@@ -33,6 +37,11 @@
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
+            android:inputType="textPassword"
+            android:textColor="@android:color/black"
+
+            android:backgroundTint="#d3d3d3"
+
             android:hint="@string/password"
 
             />

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    tools:context=".dateSendingActivity" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    -<LinearLayout android:layout_height="match_parent" android:layout_width="match_parent" tools:layout_editor_absoluteY="183dp" tools:layout_editor_absoluteX="145dp" android:orientation="vertical">
+
+    <DatePicker android:layout_height="wrap_content" android:layout_width="match_parent" android:calendarViewShown="false" android:datePickerMode="spinner" android:id="@+id/datePicker1"/>
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="   Enter time in hh:mm format"
+        android:inputType="time" />
+    <Button
+        android:id="@+id/send_date"
+        android:layout_marginTop="20dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#54AFBC"
+        android:gravity="center"
+
+        android:text="send"
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="456dp" />
+
+
+</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

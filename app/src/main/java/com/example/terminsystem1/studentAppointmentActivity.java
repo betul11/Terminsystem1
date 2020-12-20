@@ -1,5 +1,6 @@
 package com.example.terminsystem1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -40,6 +41,12 @@ public class studentAppointmentActivity extends AppCompatActivity {
     ArrayList<faculty> faculties = new ArrayList<>();
     ArrayList<academic> academics = new ArrayList<>();
 
+    String userStudentEmail;
+    static final String EXTRA_NAME = "studentEmail";
+    static final String ACADEMIC_ID = "academicID";
+
+
+
 
 
 
@@ -47,6 +54,8 @@ public class studentAppointmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_appointment);
+        userStudentEmail = getIntent().getStringExtra(StudentHomeScreenActivity.EXTRA_NAME);
+
 
         try {
             faculties = db.getAllFaculties();
@@ -99,7 +108,11 @@ public class studentAppointmentActivity extends AppCompatActivity {
                         academicAdapter.setOnItemClickListener(new academicAdapter.onItemClickListener() {
                             @Override
                             public void onItemClick(int position) throws SQLException, ClassNotFoundException {
-
+                                        int academicID = academics.get(position).getAcademicID();
+                                        Intent intent = new Intent(studentAppointmentActivity.this, dateSendingActivity.class);
+                                        intent.putExtra(EXTRA_NAME, userStudentEmail);
+                                        intent.putExtra(ACADEMIC_ID,academicID );
+                                        startActivity(intent);
 
 
 

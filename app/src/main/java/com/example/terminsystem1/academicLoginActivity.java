@@ -43,7 +43,7 @@ public class academicLoginActivity extends AppCompatActivity {
             if (counter == 1) {
                 System.out.println("ACADEMIC FOUND");
                 Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, studentAppointmentActivity.class);
+                Intent i = new Intent(this, StudentHomeScreenActivity.class);
                 i.putExtra("academicEmail", inputEmail);
                 startActivity(i);
             } else {

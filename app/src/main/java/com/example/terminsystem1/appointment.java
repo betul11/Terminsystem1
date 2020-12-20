@@ -12,10 +12,10 @@ public class appointment {
 
     private  String appointmentStatus;
     private Date appointmentDate;
-    private int appointmentTime;
+    private String appointmentTime;
 
     public appointment(int appointmentID, int appointmentAcademicID, int appointmentStudentID,
-                       String appointmentStatus, Date appointmentDate, int appointmentTime) {
+                       String appointmentStatus, Date appointmentDate, String appointmentTime) {
         this.appointmentID = appointmentID;
         this.appointmentAcademicID = appointmentAcademicID;
         this.appointmentStudentID = appointmentStudentID;
@@ -64,11 +64,11 @@ public class appointment {
         this.appointmentDate = appointmentDate;
     }
 
-    public int getAppointmentTime() {
+    public String getAppointmentTime() {
         return appointmentTime;
     }
 
-    public void setAppointmentTime(int appointmentTime) {
+    public void setAppointmentTime(String appointmentTime) {
         this.appointmentTime = appointmentTime;
     }
 }

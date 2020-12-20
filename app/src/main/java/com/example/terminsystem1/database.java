@@ -7,9 +7,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 
-public class database extends AsyncTask<String,Void,String> {
+public class database  {
     Connection dbConnection;
 
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
@@ -30,10 +32,7 @@ public class database extends AsyncTask<String,Void,String> {
     public database() {
     }
 
-    @Override
-    protected String doInBackground(String... strings) {
-        return null;
-    }
+
 
     public ArrayList<department> getRelevantDepartment(int facultyId) throws SQLException {
         String query = "SELECT * FROM " + Const.DEPARTMENTS_TABLE + " WHERE " + Const.DEPARTMENT_FACULTY_ID + " = ?";
@@ -61,6 +60,25 @@ public class database extends AsyncTask<String,Void,String> {
         return departments;
     }
 
+    public int getStudentIdByEmail (String email) throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM " + Const.STUDENTS_TABLE + " WHERE " + Const.STUDENT_EMAIL + "= ? ";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setString(1, email);
+        int studentID = 100;
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next()) {
+
+             studentID = rs.getInt(Const.STUDENT_ID);
+        }
+
+        return studentID;
+
+
+
+    }
+
+
+
 
     public ResultSet studentLogin(student user) throws SQLException, ClassNotFoundException {
         System.out.println("INSIDE DATABASE CLASS");
@@ -76,6 +94,76 @@ public class database extends AsyncTask<String,Void,String> {
 
             return resultSet;
         }
+
+    public void setStudentAppointments(int terminid, int akad, String status, Date datum, String ziet) throws SQLException, ClassNotFoundException {
+
+        String query = "INSERT INTO  "+Const.APPOINTMENTS_TABLE+ " VALUES(" +
+                "null," +
+                "null," +
+                "1," +
+                "'available'," +
+                "'"  + datum.toString() + "'" +
+                "," + ziet +
+                ")";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        ResultSet resultSet = preparedStatement.executeQuery();
+    }
+    public int sendAppointmentRequest(int academicID,int studentID, Date date, String time) throws SQLException, ClassNotFoundException {
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+        String query = "INSERT INTO "+Const.APPOINTMENTS_TABLE+ " (`akademimitgliedID`, `studentID`, `status`, `datum`, `zeit`) " +
+                "VALUES ( ?, ?, 'waiting', ?, ?)";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setInt(1, academicID);
+
+        preparedStatement.setInt(2, studentID);
+        preparedStatement.setDate(3, sqlDate);
+        preparedStatement.setString(4, time);
+
+        int result = preparedStatement.executeUpdate();
+        return result;
+
+
+    }
+
+    public int getAvailableAppointment (int academicID,int studentID, Date date, String time) throws SQLException, ClassNotFoundException {
+       java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+        String query = "SELECT * FROM " + Const.APPOINTMENTS_TABLE + " WHERE " +
+                Const.APPOINTMENT_DATE + " = ? AND " + Const.APPOINTMENT_TIME + "= ?";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setDate(1, sqlDate);
+        preparedStatement.setString(2, time);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (!resultSet.next()) {
+            System.out.println("NO AVAILABLE APPOINTMENTS!!! CREATING AVAILABLES");
+            sendAppointmentRequest(academicID, studentID, date, time);
+            return 1;
+            }
+
+         else {
+
+            return 2;
+            }
+
+
+
+
+
+        /*ArrayList<appointment> availableAppointments = new ArrayList<>();
+        while (resultSet.next()) {
+            availableAppointments.add(new appointment(resultSet.getInt(Const.APPOINTMENT_ID),
+                    resultSet.getInt(Const.APPOINTMENT_ACADEMIC_ID),
+                    resultSet.getInt(Const.APPOINTMENT_STUDENT_ID),
+                    resultSet.getString(Const.APPOINTMENT_STATUS),
+                    resultSet.getDate(Const.APPOINTMENT_DATE),
+                    resultSet.getString(Const.APPOINTMENT_TIME)
+
+            ));
+        }
+        return availableAppointments;*/
+
+    }
 
 
         public ArrayList<faculty> getAllFaculties () throws SQLException, ClassNotFoundException {
@@ -125,7 +213,7 @@ public class database extends AsyncTask<String,Void,String> {
                         resultSet.getInt(Const.APPOINTMENT_STUDENT_ID),
                         resultSet.getString(Const.APPOINTMENT_STATUS),
                         resultSet.getDate(Const.APPOINTMENT_DATE),
-                        resultSet.getInt(Const.APPOINTMENT_TIME)
+                        resultSet.getString(Const.APPOINTMENT_TIME)
 
                 ));
             }
