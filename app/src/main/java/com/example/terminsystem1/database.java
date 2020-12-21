@@ -8,7 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class database  {
@@ -200,10 +202,19 @@ public class database  {
 
         public ArrayList<appointment> getStudentAppointments ( int studentID) throws
         SQLException, ClassNotFoundException {
+            Calendar calendar = Calendar.getInstance();
+
+            Date date = calendar.getTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            sdf.format(date);
+            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+
             String query = "SELECT * FROM " + Const.APPOINTMENTS_TABLE + " WHERE " + Const.APPOINTMENT_STUDENT_ID +
-                    " = ?";
+                    " = ? AND "+ Const.APPOINTMENT_DATE + "> ?";
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
             preparedStatement.setInt(1, studentID);
+            preparedStatement.setDate(2, sqlDate);
             ResultSet resultSet = preparedStatement.executeQuery();
             ArrayList<appointment> studentAppointments = new ArrayList<>();
 
