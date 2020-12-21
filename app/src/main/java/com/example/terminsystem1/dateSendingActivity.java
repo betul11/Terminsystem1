@@ -56,11 +56,16 @@ public class dateSendingActivity extends AppCompatActivity {
                 int year = picker.getYear();
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, day);
+                if((calendar.get(Calendar.DAY_OF_WEEK)==Calendar.SATURDAY) ||
+                        (calendar.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY)){
+                    Toast.makeText(dateSendingActivity.this, "The specified date is not a business day " , Toast.LENGTH_LONG).show();
+                      return;
+                }
+
 
                 Date date = calendar.getTime();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 sdf.format(date);
-                Toast.makeText(dateSendingActivity.this, "I am in send date: " + date , Toast.LENGTH_LONG).show();
                 try {
                     userStudentID = db.getStudentIdByEmail(userStudentEmail);
                 } catch (SQLException throwables) {
