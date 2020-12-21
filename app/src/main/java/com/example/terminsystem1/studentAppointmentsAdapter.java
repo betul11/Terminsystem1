@@ -28,12 +28,13 @@ public class studentAppointmentsAdapter extends RecyclerView.Adapter <studentApp
         public TextView appointmentAcademicText;
         public TextView appointmentDateText;
         public TextView appointmentStatusText;
-
+        public TextView appointmentTimeText;
         public studentAppointmentsViewHolder(@NonNull View itemView,onItemClickListener listener) {
             super(itemView);
             appointmentAcademicText = itemView.findViewById(R.id.student_appointment_academicName);
             appointmentDateText = itemView.findViewById(R.id.student_appointment_date);
                 appointmentStatusText = itemView.findViewById(R.id.student_appointment_status);
+                appointmentTimeText = itemView.findViewById(R.id.student_appointment_time);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -83,8 +84,8 @@ public class studentAppointmentsAdapter extends RecyclerView.Adapter <studentApp
         holder.appointmentAcademicText.setText(academicName);
         holder.appointmentDateText.setText(currentAppointment.getAppointmentDate().toString());
         holder.appointmentStatusText.setText(currentAppointment.getAppointmentStatus());
+        holder.appointmentTimeText.setText(currentAppointment.getAppointmentTime());
 
-        // ADD TIME PARAMETER!!!!!!!!!!!
     }
 
     @Override
