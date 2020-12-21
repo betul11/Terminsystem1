@@ -15,6 +15,9 @@ public class studentMyAppointmentsActivity extends AppCompatActivity {
     RecyclerView studentAppointmentsRecycler;
     studentAppointmentsAdapter studentAppointmentsAdapter;
     RecyclerView.LayoutManager studentAppointmentsLayoutManager;
+    static final String EXTRA_NAME = "studentEmail";
+    ArrayList<appointment> myAppointments = new ArrayList<>();
+
     database db = new database();
     String userStudentEmail;
     int studentID;
@@ -22,7 +25,7 @@ public class studentMyAppointmentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_my_appointments);
-        ArrayList<appointment> myAppointments = new ArrayList<>();
+
        userStudentEmail = getIntent().getStringExtra(StudentHomeScreenActivity.EXTRA_NAME);
         try {
             studentID = db.getStudentIdByEmail(userStudentEmail);
@@ -42,6 +45,8 @@ public class studentMyAppointmentsActivity extends AppCompatActivity {
         studentAppointmentsRecycler = findViewById(R.id.studentMyAppointmentsRecycler);
         studentAppointmentsLayoutManager = new LinearLayoutManager(this);
         studentAppointmentsAdapter = new studentAppointmentsAdapter(myAppointments);
+        studentAppointmentsRecycler.setLayoutManager(studentAppointmentsLayoutManager);
+        studentAppointmentsRecycler.setAdapter(studentAppointmentsAdapter);
 
 
 

@@ -15,6 +15,8 @@ import java.util.ArrayList;
 public class studentAppointmentsAdapter extends RecyclerView.Adapter <studentAppointmentsAdapter.studentAppointmentsViewHolder>{
     private ArrayList<appointment> studentAppointmentsArrayList;
     private onItemClickListener studentAppointmentsListener;
+    database db = new database();
+
     public interface onItemClickListener{
         void onItemClick (int position) throws SQLException;
     }
@@ -58,7 +60,7 @@ public class studentAppointmentsAdapter extends RecyclerView.Adapter <studentApp
     @NonNull
     @Override
     public studentAppointmentsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.faculty_example,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.student_appointment,parent,false);
         studentAppointmentsViewHolder fvh = new studentAppointmentsViewHolder(v,studentAppointmentsListener);
         return fvh;
     }
@@ -66,21 +68,23 @@ public class studentAppointmentsAdapter extends RecyclerView.Adapter <studentApp
     @Override
     public void onBindViewHolder(@NonNull studentAppointmentsViewHolder holder, int position) {
         appointment currentAppointment = studentAppointmentsArrayList.get(position);
-        database db = new database();
         int academicID = currentAppointment.getAppointmentAcademicID();
-        String academicName = null;
+        String academicName = "adapter";
+
+
         try {
-            academicName = db.getAcademic(academicID).getAcademicName();
+            academicName = db.getAcademicName(academicID);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         holder.appointmentAcademicText.setText(academicName);
         holder.appointmentDateText.setText(currentAppointment.getAppointmentDate().toString());
         holder.appointmentStatusText.setText(currentAppointment.getAppointmentStatus());
 
-        // ADD TIME PARAMETER!!!!!!!!!!! AND SEARCH FOR ACADEMIC NAME
+        // ADD TIME PARAMETER!!!!!!!!!!!
     }
 
     @Override
