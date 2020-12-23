@@ -2,6 +2,7 @@ package com.example.terminsystem1;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -60,9 +61,12 @@ public class AcademicHomeScreenActivity extends AppCompatActivity {
 
             @Override
             public void onAcceptClick(int position) throws SQLException, ClassNotFoundException {
+                ImageView acceptRequest = findViewById(R.id.image_accept);
                 appointment acceptedAppointment = myAppointments.get(position);
                 int acceptedAppointmentID = acceptedAppointment.getAppointmentID();
                 db.acceptRequest(acceptedAppointmentID);
+                acceptRequest.setImageResource(0);
+
 
                 academicAppointmentsAdapter.notifyItemChanged(position);
                 academicAppointmentsAdapter.notifyDataSetChanged();

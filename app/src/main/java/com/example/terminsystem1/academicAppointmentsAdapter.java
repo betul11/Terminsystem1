@@ -126,8 +126,7 @@ public class academicAppointmentsAdapter extends RecyclerView.Adapter <academicA
     public void onBindViewHolder(@NonNull academicAppointmentsViewHolder holder, int position) {
         appointment currentAppointment = academicAppointmentsArrayList.get(position);
         int studentID = currentAppointment.getAppointmentStudentID();
-        if(currentAppointment.getAppointmentStatus()=="accepted"){
-            System.out.println("I AM IN ADAPTER ACCEPTED! FUCKING DISAPPEAR!!!");
+        if(currentAppointment.getAppointmentStatus().equals("accepted")){
             holder.acceptRequest.setImageResource(0);
         }
         String studentName = "adapter";
