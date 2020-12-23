@@ -17,6 +17,7 @@ public class academicLoginActivity extends AppCompatActivity {
     EditText eEmail;
     EditText ePassword;
     Button eLogin;
+    static final String EXTRA_NAME = "academicEmail";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,9 @@ public class academicLoginActivity extends AppCompatActivity {
             if (counter == 1) {
                 System.out.println("ACADEMIC FOUND");
                 Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, StudentHomeScreenActivity.class);
-                i.putExtra("academicEmail", inputEmail);
+                Intent i = new Intent(this, AcademicHomeScreenActivity.class);
+                i.putExtra(EXTRA_NAME, inputEmail);
+
                 startActivity(i);
             } else {
                 System.out.println("ACADEMIC NOT FOUND");

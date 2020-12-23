@@ -78,6 +78,20 @@ public class database  {
 
 
     }
+    public int getAcademicIdByEmail(String email) throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM " + Const.ACADEMIC_TABLE + " WHERE " + Const.ACADEMIC_EMAIL + "= ? ";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setString(1, email);
+        int academicID = 500;
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next()) {
+
+            academicID = rs.getInt(Const.ACADEMIC_ID);
+        }
+        return academicID;
+
+
+    }
 
 
 
@@ -151,19 +165,6 @@ public class database  {
 
 
 
-
-        /*ArrayList<appointment> availableAppointments = new ArrayList<>();
-        while (resultSet.next()) {
-            availableAppointments.add(new appointment(resultSet.getInt(Const.APPOINTMENT_ID),
-                    resultSet.getInt(Const.APPOINTMENT_ACADEMIC_ID),
-                    resultSet.getInt(Const.APPOINTMENT_STUDENT_ID),
-                    resultSet.getString(Const.APPOINTMENT_STATUS),
-                    resultSet.getDate(Const.APPOINTMENT_DATE),
-                    resultSet.getString(Const.APPOINTMENT_TIME)
-
-            ));
-        }
-        return availableAppointments;*/
 
     }
 
@@ -279,24 +280,93 @@ public class database  {
 
     }
 
-    /*
-    public ArrayList<appointment> getAvailableAppointments(int academicID, Date date) throws SQLException, ClassNotFoundException {
-        String query = "SELECT * FROM "+ Const.ACADEMIC_TABLE+ " WHERE "+
-                Const.ACADEMIC_DEPARTMENT_ID+ " = ?";
+    public ArrayList<appointment> getAcademicAppointments(int academicID) throws SQLException, ClassNotFoundException {
+        Calendar calendar = Calendar.getInstance();
+
+        Date date = calendar.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.format(date);
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+
+
+        String query = "SELECT * FROM " + Const.APPOINTMENTS_TABLE + " WHERE " + Const.APPOINTMENT_ACADEMIC_ID +
+                " = ? AND "+ Const.APPOINTMENT_DATE + "> ? AND ("+Const.APPOINTMENT_STATUS+" = 'waiting' OR "+
+        Const.APPOINTMENT_STATUS+ " = 'accepted' )";
+
 
         PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
-        preparedStatement.setInt(1, departmentID);
+        preparedStatement.setInt(1, academicID);
+        preparedStatement.setDate(2, sqlDate);
         ResultSet resultSet = preparedStatement.executeQuery();
-        ArrayList<academic> academics = new ArrayList<>();
+        ArrayList<appointment> academicAppointments = new ArrayList<>();
 
-        while(resultSet.next()){
-            academics.add(new academic(resultSet.getInt(Const.ACADEMIC_ID),
-                    resultSet.getString(Const.ACADEMIC_NAME)
-            )) ;
+
+
+        while (resultSet.next()) {
+            academicAppointments.add(new appointment(resultSet.getInt(Const.APPOINTMENT_ID),
+                    resultSet.getInt(Const.APPOINTMENT_ACADEMIC_ID),
+                    resultSet.getInt(Const.APPOINTMENT_STUDENT_ID),
+                    resultSet.getString(Const.APPOINTMENT_STATUS),
+                    resultSet.getDate(Const.APPOINTMENT_DATE),
+                    resultSet.getString(Const.APPOINTMENT_TIME)
+
+            ));
         }
 
-        return academics;
-    }*/
+
+        return academicAppointments;
+
+    }
+
+    public String getStudentName(int studentID) throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM " + Const.STUDENTS_TABLE + " WHERE " + Const.STUDENT_ID + " = ?";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setInt(1, studentID);
+        ResultSet rs = preparedStatement.executeQuery();
+        String studentName= "database";
+        while (rs.next()) {
+
+            studentName = rs.getString(Const.STUDENT_NAME);
+        }
+
+        return studentName;
+    }
+
+    public int getStudentNumber(int studentID) throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM " + Const.STUDENTS_TABLE + " WHERE " + Const.STUDENT_ID + " = ?";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setInt(1, studentID);
+        ResultSet rs = preparedStatement.executeQuery();
+        int studentNumber= 200;
+        while (rs.next()) {
+
+            studentNumber = rs.getInt(Const.STUDENT_NUMBER);
+        }
+
+        return studentNumber;
+    }
+
+    public void acceptRequest(int acceptedAppointmentID) throws SQLException, ClassNotFoundException {
+        String query = "UPDATE " + Const.APPOINTMENTS_TABLE +" SET "+ Const.APPOINTMENT_STATUS  + " = 'accepted' WHERE "
+                + Const.APPOINTMENT_ID + " = ?";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setInt(1, acceptedAppointmentID);
+        int rs = preparedStatement.executeUpdate();
+        System.out.println("accepted");
+
+
+    }
+
+    public void denyRequest(int deniedAppointmentID) throws SQLException, ClassNotFoundException {
+        String query = "UPDATE " + Const.APPOINTMENTS_TABLE +" SET "+ Const.APPOINTMENT_STATUS  + " = 'denied' WHERE "
+                + Const.APPOINTMENT_ID + " = ?";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setInt(1, deniedAppointmentID);
+        int rs = preparedStatement.executeUpdate();
+        System.out.println("denied");
+    }
+
 
 
     }

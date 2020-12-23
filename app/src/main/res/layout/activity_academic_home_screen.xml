@@ -1,87 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tau"
-
     tools:context=".AcademicHomeScreenActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="414dp"
-        android:layout_height="59dp"
-        android:background="#00000000"
-        android:text="@string/terminsystem3"
-        android:textAlignment="center"
-        android:textColor="#54AFBC"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/academicAppointmentsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="4dp"
+        android:scrollbars="vertical"
+        android:background="@android:color/darker_gray"
+        />
 
 
-    <Button
-        android:id="@+id/termin_request_button"
-        android:layout_width="212dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="45dp"
-        android:text="@string/termin_request"
-        android:textStyle="bold"
-        app:backgroundTint="#54AFBC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/Academictermin_list_button"
-        android:layout_width="212dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="145dp"
-        android:text="@string/termin_list"
-        android:textStyle="bold"
-        app:backgroundTint="#54AFBC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/cancel_termin_button"
-        android:layout_width="212dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="245dp"
-        android:text="@string/cancel_termin"
-        android:textStyle="bold"
-        app:backgroundTint="#54AFBC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/Academicpassword_settings_button"
-        android:layout_width="212dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="345dp"
-        android:text="@string/password_settings"
-        android:textStyle="bold"
-        app:backgroundTint="#54AFBC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="9dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
