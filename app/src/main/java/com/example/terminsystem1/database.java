@@ -368,6 +368,28 @@ public class database  {
     }
 
 
+    public void changeStudentPassword(String studentEmail, String newPass) throws SQLException, ClassNotFoundException {
+        String query = "UPDATE " + Const.STUDENTS_TABLE +" SET "+ Const.STUDENT_PASSWORD  + " = ? WHERE "
+                + Const.STUDENT_EMAIL + " = ?";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setString(1, newPass);
+        preparedStatement.setString(2, studentEmail);
+        int rs = preparedStatement.executeUpdate();
+
 
     }
+
+    public boolean checkIfStudentPasswordIsCorrect(String studentEmail, String oldPass) throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM "+Const.STUDENTS_TABLE+ " WHERE "+Const.STUDENT_EMAIL+ " = ? AND "+
+                Const.STUDENT_PASSWORD + " = ? ";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setString(1, studentEmail);
+        preparedStatement.setString(2, oldPass);
+        ResultSet rs = preparedStatement.executeQuery();
+        if(!rs.next()){
+            return false;
+        }
+        return true;
+    }
+}
 

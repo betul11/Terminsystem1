@@ -54,7 +54,7 @@
             android:backgroundTint="#54AFBC"
             android:onClick="login"
             android:text="@string/login"
-            android:translationX="250dp" />
+            android:translationX="225dp" />
 
 
     </LinearLayout>

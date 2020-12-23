@@ -128,6 +128,7 @@ public class academicAppointmentsAdapter extends RecyclerView.Adapter <academicA
         int studentID = currentAppointment.getAppointmentStudentID();
         if(currentAppointment.getAppointmentStatus().equals("accepted")){
             holder.acceptRequest.setImageResource(0);
+
         }
         String studentName = "adapter";
         int studentNumber = 200;

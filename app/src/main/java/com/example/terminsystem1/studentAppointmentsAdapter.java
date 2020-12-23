@@ -86,6 +86,7 @@ public class studentAppointmentsAdapter extends RecyclerView.Adapter <studentApp
         holder.appointmentStatusText.setText(currentAppointment.getAppointmentStatus());
         holder.appointmentTimeText.setText(currentAppointment.getAppointmentTime());
 
+
     }
 
     @Override
