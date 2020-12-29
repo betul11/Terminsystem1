@@ -14,7 +14,21 @@
         android:padding="4dp"
         android:scrollbars="vertical"
         android:background="@android:color/darker_gray"
+        android:visibility="gone"
         />
+
+    <TextView
+        android:id="@+id/no_appointments_to_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Appointments to Display"
+        android:textColor="@android:color/holo_red_dark"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:textSize="25sp"
+        android:visibility="gone"
+        />
+
 
 
 </RelativeLayout>

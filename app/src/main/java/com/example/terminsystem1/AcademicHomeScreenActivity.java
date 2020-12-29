@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ public class AcademicHomeScreenActivity extends AppCompatActivity {
     RecyclerView academicAppointmentsRecycler;
     academicAppointmentsAdapter academicAppointmentsAdapter;
     RecyclerView.LayoutManager academicAppointmentsLayoutManager;
+    TextView emptyText;
     ArrayList<appointment> myAppointments = new ArrayList<>();
     database db = new database();
     String userAcademicEmail;
@@ -46,46 +48,54 @@ public class AcademicHomeScreenActivity extends AppCompatActivity {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        if(myAppointments.isEmpty()){
 
-        academicAppointmentsRecycler = findViewById(R.id.academicAppointmentsRecycler);
-        academicAppointmentsLayoutManager = new LinearLayoutManager(this);
-        academicAppointmentsAdapter = new academicAppointmentsAdapter(myAppointments);
-        academicAppointmentsRecycler.setLayoutManager(academicAppointmentsLayoutManager);
-        academicAppointmentsRecycler.setAdapter(academicAppointmentsAdapter);
-
-        academicAppointmentsAdapter.setOnItemClickListener(new academicAppointmentsAdapter.onItemClickListener() {
-            @Override
-            public void onItemClick(int position) throws SQLException {
-
-            }
-
-            @Override
-            public void onAcceptClick(int position) throws SQLException, ClassNotFoundException {
-                ImageView acceptRequest = findViewById(R.id.image_accept);
-                appointment acceptedAppointment = myAppointments.get(position);
-                int acceptedAppointmentID = acceptedAppointment.getAppointmentID();
-                db.acceptRequest(acceptedAppointmentID);
-                acceptRequest.setImageResource(0);
+            emptyText = findViewById(R.id.no_appointments_to_display);
+            emptyText.setVisibility(View.VISIBLE);
 
 
-                academicAppointmentsAdapter.notifyItemChanged(position);
-                academicAppointmentsAdapter.notifyDataSetChanged();
+        }else {
+            academicAppointmentsRecycler = findViewById(R.id.academicAppointmentsRecycler);
+            academicAppointmentsRecycler.setVisibility(View.VISIBLE);
+            academicAppointmentsLayoutManager = new LinearLayoutManager(this);
+            academicAppointmentsAdapter = new academicAppointmentsAdapter(myAppointments);
+            academicAppointmentsRecycler.setLayoutManager(academicAppointmentsLayoutManager);
+            academicAppointmentsRecycler.setAdapter(academicAppointmentsAdapter);
 
-            }
+            academicAppointmentsAdapter.setOnItemClickListener(new academicAppointmentsAdapter.onItemClickListener() {
+                @Override
+                public void onItemClick(int position) throws SQLException {
 
-            @Override
-            public void onDenyClick(int position) throws SQLException, ClassNotFoundException{
-                appointment deniedAppointment = myAppointments.get(position);
-                int deniedAppointmentID = deniedAppointment.getAppointmentID();
-                db.denyRequest(deniedAppointmentID);
-                myAppointments.remove(position);
-                academicAppointmentsAdapter.notifyItemRemoved(position);
+                }
+
+                @Override
+                public void onAcceptClick(int position) throws SQLException, ClassNotFoundException {
+                    ImageView acceptRequest = findViewById(R.id.image_accept);
+                    appointment acceptedAppointment = myAppointments.get(position);
+                    int acceptedAppointmentID = acceptedAppointment.getAppointmentID();
+                    db.acceptRequest(acceptedAppointmentID);
+                    acceptRequest.setImageResource(0);
 
 
-            }
+                    academicAppointmentsAdapter.notifyItemChanged(position);
+                    academicAppointmentsAdapter.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onDenyClick(int position) throws SQLException, ClassNotFoundException {
+                    appointment deniedAppointment = myAppointments.get(position);
+                    int deniedAppointmentID = deniedAppointment.getAppointmentID();
+                    db.denyRequest(deniedAppointmentID);
+                    myAppointments.remove(position);
+                    academicAppointmentsAdapter.notifyItemRemoved(position);
 
 
-        });
+                }
+
+
+            });
+        }
 
 
 
