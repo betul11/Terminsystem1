@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class studentMyAppointmentsActivity extends AppCompatActivity {
     RecyclerView.LayoutManager studentAppointmentsLayoutManager;
     static final String EXTRA_NAME = "studentEmail";
     ArrayList<appointment> myAppointments = new ArrayList<>();
+    TextView emptyText;
 
     database db = new database();
     String userStudentEmail;
@@ -42,11 +45,20 @@ public class studentMyAppointmentsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        if(myAppointments.isEmpty()){
+            emptyText = findViewById(R.id.no_appointments_to_show);
+            emptyText.setVisibility(View.VISIBLE);
+
+        }
+        else
+        {
         studentAppointmentsRecycler = findViewById(R.id.studentMyAppointmentsRecycler);
+        studentAppointmentsRecycler.setVisibility(View.VISIBLE);
         studentAppointmentsLayoutManager = new LinearLayoutManager(this);
         studentAppointmentsAdapter = new studentAppointmentsAdapter(myAppointments);
         studentAppointmentsRecycler.setLayoutManager(studentAppointmentsLayoutManager);
         studentAppointmentsRecycler.setAdapter(studentAppointmentsAdapter);
+        }
 
 
 
