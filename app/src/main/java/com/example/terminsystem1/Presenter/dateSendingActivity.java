@@ -17,6 +17,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/* Github link:
+ * https://github.com/betul11/Terminsystem1
+ * */
 public class dateSendingActivity extends AppCompatActivity {
     DatePicker picker;
     EditText timeText;

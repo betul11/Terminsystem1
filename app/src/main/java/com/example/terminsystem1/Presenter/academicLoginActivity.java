@@ -17,6 +17,9 @@ import com.example.terminsystem1.R;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/* Github link:
+ * https://github.com/betul11/Terminsystem1
+ * */
 public class academicLoginActivity extends AppCompatActivity {
     database db = new database();
     EditText eEmail;

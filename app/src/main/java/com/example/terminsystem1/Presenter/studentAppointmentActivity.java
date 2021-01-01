@@ -19,6 +19,9 @@ import com.example.terminsystem1.Presenter.Adapters.facultyAdapter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/* Github link:
+ * https://github.com/betul11/Terminsystem1
+ * */
 public class studentAppointmentActivity extends AppCompatActivity {
    //faculty
     RecyclerView facultiesRecycler;

@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+/* Github link:
+ * https://github.com/betul11/Terminsystem1
+ * */
 public class database  {
     Connection dbConnection;
 

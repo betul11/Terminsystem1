@@ -14,6 +14,9 @@ import com.example.terminsystem1.R;
 
 import java.sql.SQLException;
 
+/* Github link:
+ * https://github.com/betul11/Terminsystem1
+ * */
 public class StudentHomeScreenActivity extends AppCompatActivity {
     String studentEmail;
     Button searchAppointmentButton, myAppointmentsButton, changePasswordButton;
