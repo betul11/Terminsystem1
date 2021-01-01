@@ -1,4 +1,4 @@
-package com.example.terminsystem1;
+package com.example.terminsystem1.Presenter.Adapters;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -7,6 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+
+import com.example.terminsystem1.Models.academic;
+import com.example.terminsystem1.R;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 

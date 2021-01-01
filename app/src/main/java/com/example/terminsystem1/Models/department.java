@@ -1,4 +1,4 @@
-package com.example.terminsystem1;
+package com.example.terminsystem1.Models;
 
 public class department {
     private int departmentID;

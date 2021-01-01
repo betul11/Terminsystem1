@@ -1,4 +1,4 @@
-package com.example.terminsystem1;
+package com.example.terminsystem1.Presenter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.terminsystem1.R;
 
 import java.sql.SQLException;
 

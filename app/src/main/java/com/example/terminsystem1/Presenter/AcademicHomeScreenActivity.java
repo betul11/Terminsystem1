@@ -1,23 +1,25 @@
-package com.example.terminsystem1;
+package com.example.terminsystem1.Presenter;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.terminsystem1.Models.Database.database;
+import com.example.terminsystem1.Models.appointment;
+import com.example.terminsystem1.R;
+import com.example.terminsystem1.Presenter.Adapters.academicAppointmentsAdapter;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AcademicHomeScreenActivity extends AppCompatActivity {
     RecyclerView academicAppointmentsRecycler;
-    academicAppointmentsAdapter academicAppointmentsAdapter;
+    com.example.terminsystem1.Presenter.Adapters.academicAppointmentsAdapter academicAppointmentsAdapter;
     RecyclerView.LayoutManager academicAppointmentsLayoutManager;
     TextView emptyText;
     ArrayList<appointment> myAppointments = new ArrayList<>();

@@ -1,13 +1,16 @@
-package com.example.terminsystem1;
+package com.example.terminsystem1.Models.Database;
 
-import android.os.AsyncTask;
+import com.example.terminsystem1.Models.academic;
+import com.example.terminsystem1.Models.appointment;
+import com.example.terminsystem1.Models.department;
+import com.example.terminsystem1.Models.faculty;
+import com.example.terminsystem1.Models.student;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -182,7 +185,7 @@ public class database  {
         }
 
 
-        public ArrayList<academic> getRelevantAcademic ( int departmentID) throws
+        public ArrayList<academic> getRelevantAcademic (int departmentID) throws
         SQLException, ClassNotFoundException {
             String query = "SELECT * FROM " + Const.ACADEMIC_TABLE + " WHERE " +
                     Const.ACADEMIC_DEPARTMENT_ID + " = ?";
@@ -201,7 +204,7 @@ public class database  {
             return academics;
         }
 
-        public ArrayList<appointment> getStudentAppointments ( int studentID) throws
+        public ArrayList<appointment> getStudentAppointments (int studentID) throws
         SQLException, ClassNotFoundException {
             Calendar calendar = Calendar.getInstance();
 

@@ -1,16 +1,17 @@
-package com.example.terminsystem1;
+package com.example.terminsystem1.Presenter.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.terminsystem1.Models.Database.database;
+import com.example.terminsystem1.Models.appointment;
+import com.example.terminsystem1.R;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

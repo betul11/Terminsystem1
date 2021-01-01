@@ -1,4 +1,4 @@
-package com.example.terminsystem1;
+package com.example.terminsystem1.Models.Database;
 
 public class Const {
     //tables names

@@ -1,4 +1,4 @@
-package com.example.terminsystem1;
+package com.example.terminsystem1.Presenter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.terminsystem1.Models.Database.database;
+import com.example.terminsystem1.Models.student;
+import com.example.terminsystem1.R;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

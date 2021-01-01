@@ -1,4 +1,4 @@
-package com.example.terminsystem1;
+package com.example.terminsystem1.Models;
 
 import java.sql.Date;
 import java.text.DateFormat;

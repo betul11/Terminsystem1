@@ -1,39 +1,38 @@
-package com.example.terminsystem1;
+package com.example.terminsystem1.Presenter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import com.example.terminsystem1.Models.Database.database;
+import com.example.terminsystem1.Models.academic;
+import com.example.terminsystem1.Models.department;
+import com.example.terminsystem1.Models.faculty;
+import com.example.terminsystem1.R;
+import com.example.terminsystem1.Presenter.Adapters.academicAdapter;
+import com.example.terminsystem1.Presenter.Adapters.departmentAdapter;
+import com.example.terminsystem1.Presenter.Adapters.facultyAdapter;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 public class studentAppointmentActivity extends AppCompatActivity {
    //faculty
     RecyclerView facultiesRecycler;
-    facultyAdapter facultyAdapter;
+    com.example.terminsystem1.Presenter.Adapters.facultyAdapter facultyAdapter;
     RecyclerView.LayoutManager facultyLayoutManager;
 
     //department
     RecyclerView departmentsRecycler;
-    departmentAdapter departmentAdapter;
+    com.example.terminsystem1.Presenter.Adapters.departmentAdapter departmentAdapter;
     RecyclerView.LayoutManager departmentLayoutManager;
 
     //academic
     RecyclerView academicRecycler;
-    academicAdapter academicAdapter;
+    com.example.terminsystem1.Presenter.Adapters.academicAdapter academicAdapter;
     RecyclerView.LayoutManager academicLayoutManager;
 
     database db = new database();

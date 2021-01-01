@@ -1,4 +1,4 @@
-package com.example.terminsystem1;
+package com.example.terminsystem1.Presenter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.terminsystem1.Models.Database.database;
+import com.example.terminsystem1.Models.appointment;
+import com.example.terminsystem1.R;
+import com.example.terminsystem1.Presenter.Adapters.studentAppointmentsAdapter;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,7 +20,7 @@ public class studentMyAppointmentsActivity extends AppCompatActivity {
 
     //student appointments
     RecyclerView studentAppointmentsRecycler;
-    studentAppointmentsAdapter studentAppointmentsAdapter;
+    com.example.terminsystem1.Presenter.Adapters.studentAppointmentsAdapter studentAppointmentsAdapter;
     RecyclerView.LayoutManager studentAppointmentsLayoutManager;
     static final String EXTRA_NAME = "studentEmail";
     ArrayList<appointment> myAppointments = new ArrayList<>();

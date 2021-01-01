@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Terminsystem1"
         android:windowSoftInputMode="adjustNothing">
-        <activity android:name=".dateSendingActivity"></activity>
-        <activity android:name=".academicLoginActivity" />
-        <activity android:name=".studentLoginActivity" />
-        <activity android:name=".studentMyAppointmentsActivity" />
-        <activity android:name=".studentAppointmentActivity" />
-        <activity android:name=".StudentHomeScreenActivity" />
-        <activity android:name=".AcademicHomeScreenActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Presenter.dateSendingActivity"></activity>
+        <activity android:name=".Presenter.academicLoginActivity" />
+        <activity android:name=".Presenter.studentLoginActivity" />
+        <activity android:name=".Presenter.studentMyAppointmentsActivity" />
+        <activity android:name=".Presenter.studentAppointmentActivity" />
+        <activity android:name=".Presenter.StudentHomeScreenActivity" />
+        <activity android:name=".Presenter.AcademicHomeScreenActivity" />
+        <activity android:name=".Presenter.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
