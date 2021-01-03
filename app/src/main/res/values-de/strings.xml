@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prompt_password">Passwort</string>
+    <string name="password">Passwort</string>
+    <string name="email">Email</string>
+    <string name="login">einloggen</string>
+    <string name="student_login">Studenten Login</string>
+    <string name="academic_login">Akademiker Login</string>
+    <string name="change_password">Passwort ändern</string>
+    <string name="prompt_email">Email</string>
+    <string name="new_password">Neues Passwort</string>
+    <string name="old_password">Altes Passwort</string>
+    <string name="save">speichern</string>
+    <string name="no_appointments_to_display2">Keine Termin Anfragen</string>
+    <string name="no_appointments_to_display">Keine verfügbaren Termine</string>
+    <string name="enter_time_in_hh_mm_format">Geben Sie die Zeit im hh:mm Format ein</string>
+    <string name="faculty">Fakultät:</string>
+    <string name="department">Abteilung:</string>
+    <string name="academic">Akademiker:</string>
+    <string name="date">Datum:</string>
+    <string name="check">checken</string>
+    <string name="my_appointments">Meine Termine</string>
+    <string name="search_for_an_appointment">Termin erstellen</string>
+    <string name="student">Student</string>
+    <string name="pick_a_date">Wählen Sie ein Datum:</string>
+    <string name="time_missing">Zeit wurde nicht eingegeben</string>
+    <string name="appointment_request_sent">Terminanfrage wurde gesendet</string>
+    <string name="not_business_day">Das angegebene Datum ist kein Werktag!</string>
+    <string name="no_available_appointment">Keine verfügbaren Termine! Wählen Sie einen anderen Zeitraum</string>
+    <string name="detailsCorrectly">Bitte geben Sie alle Informationen korrekt ein!</string>
+    <string name="Redirecting">"wird weitergeleitet ... "</string>
+    <string name="tau_appointment_system">TDU-Terminsystem</string>
+</resources>

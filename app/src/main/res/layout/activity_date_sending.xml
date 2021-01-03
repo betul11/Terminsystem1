@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="   Enter time in hh:mm format"
+        android:hint="@string/enter_time_in_hh_mm_format"
         android:inputType="time" />
     <Button
         android:id="@+id/send_date"

@@ -127,7 +127,6 @@ public class studentAppointmentActivity extends AppCompatActivity {
 
 
                
-                //departmentAdapter.notifyItemChanged(position);
             }
         });
 

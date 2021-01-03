@@ -49,10 +49,13 @@ public class dateSendingActivity extends AppCompatActivity {
         send_date_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //   if(!timeText.getText().toString().isEmpty()){
-                    String time = timeText.getText().toString();
+               String timetext = timeText.getText().toString();
+              if(timetext.matches("")){
+                  String timeMissing = getString(R.string.time_missing);
+                  Toast.makeText(dateSendingActivity.this, timeMissing, Toast.LENGTH_LONG).show();
+                  return;
 
-               // }
+              }
                 int day= picker.getDayOfMonth();
                 int month = picker.getMonth();
                 int year = picker.getYear();
@@ -60,7 +63,8 @@ public class dateSendingActivity extends AppCompatActivity {
                 calendar.set(year, month, day);
                 if((calendar.get(Calendar.DAY_OF_WEEK)==Calendar.SATURDAY) ||
                         (calendar.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY)){
-                    Toast.makeText(dateSendingActivity.this, "The specified date is not a business day " , Toast.LENGTH_LONG).show();
+                    String notBusinessDay = getString(R.string.not_business_day);
+                    Toast.makeText(dateSendingActivity.this, notBusinessDay , Toast.LENGTH_LONG).show();
                       return;
                 }
 
@@ -78,11 +82,13 @@ public class dateSendingActivity extends AppCompatActivity {
                 try {
                     int result = db.getAvailableAppointment(academicID,userStudentID,date,time);
                     if(result==1){
+                        String requestSent = getString(R.string.appointment_request_sent);
 
-                        Toast.makeText(dateSendingActivity.this, "Appointment request is sent"  , Toast.LENGTH_LONG).show();
+                        Toast.makeText(dateSendingActivity.this, requestSent , Toast.LENGTH_LONG).show();
 
                     }else if(result==2){
-                        Toast.makeText(dateSendingActivity.this, "No available appointments found! Try a different date or time"  , Toast.LENGTH_LONG).show();
+                        String noAvailableAppointment = getString(R.string.no_available_appointment);
+                        Toast.makeText(dateSendingActivity.this, noAvailableAppointment , Toast.LENGTH_LONG).show();
 
 
                     }

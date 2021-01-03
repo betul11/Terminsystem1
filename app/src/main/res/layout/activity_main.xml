@@ -26,7 +26,7 @@
 
         <Button
             android:id="@+id/academicLoginButton"
-            android:layout_width="wrap_content"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:onClick="academicLogin"
@@ -38,7 +38,7 @@
 
         <Button
             android:id="@+id/studentLoginButton"
-            android:layout_width="wrap_content"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:onClick="studentLogin"

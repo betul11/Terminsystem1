@@ -63,11 +63,13 @@ public class StudentHomeScreenActivity extends AppCompatActivity {
 
         if (checker==true){
             db.changeStudentPassword(studentEmail,newPass.getText().toString());
-            Toast.makeText(getApplicationContext(), "password is changed successfully", Toast.LENGTH_SHORT).show(); //(inputEmail.isEmpty() || inputPassword.isEmpty())
+            String passwordChanged = "password is changed successfully";
+            Toast.makeText(getApplicationContext(),passwordChanged , Toast.LENGTH_SHORT).show(); //(inputEmail.isEmpty() || inputPassword.isEmpty())
             setContentView(R.layout.activity_student_home_screen);
 
         } else{
-            Toast.makeText(getApplicationContext(), "Old password is incorrect!", Toast.LENGTH_SHORT).show(); //(inputEmail.isEmpty() || inputPassword.isEmpty())
+            String oldPasswordIncorrect = "Old password is incorrect!";
+            Toast.makeText(getApplicationContext(), oldPasswordIncorrect , Toast.LENGTH_SHORT).show(); //(inputEmail.isEmpty() || inputPassword.isEmpty())
 
         }
 

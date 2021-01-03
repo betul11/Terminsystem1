@@ -51,14 +51,17 @@ public class academicLoginActivity extends AppCompatActivity {
             }
             if (counter == 1) {
                 System.out.println("ACADEMIC FOUND");
-                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                String redirecting = getString(R.string.Redirecting);
+                Toast.makeText(getApplicationContext(), redirecting, Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(this, AcademicHomeScreenActivity.class);
                 i.putExtra(EXTRA_NAME, inputEmail);
 
                 startActivity(i);
             } else {
                 System.out.println("ACADEMIC NOT FOUND");
-                Toast.makeText(getApplicationContext(), "Please enter all the details correctly!", Toast.LENGTH_SHORT).show(); //(inputEmail.isEmpty() || inputPassword.isEmpty())
+                String detailsCorrectly = getString(R.string.detailsCorrectly);
+                Toast.makeText(getApplicationContext(),detailsCorrectly , Toast.LENGTH_SHORT).show(); //(inputEmail.isEmpty() || inputPassword.isEmpty())
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
