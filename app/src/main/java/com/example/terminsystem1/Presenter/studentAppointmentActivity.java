@@ -49,9 +49,6 @@ public class studentAppointmentActivity extends AppCompatActivity {
 
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +66,6 @@ public class studentAppointmentActivity extends AppCompatActivity {
 
         //faculties list
         facultiesRecycler = findViewById(R.id.searchAppointmentRecycler);
-       // facultiesRecycler.setHasFixedSize(true);
         facultyLayoutManager = new LinearLayoutManager(this);
         facultyAdapter = new facultyAdapter(faculties);
 
@@ -85,7 +81,6 @@ public class studentAppointmentActivity extends AppCompatActivity {
                 //departments list
 
                 departmentsRecycler = findViewById(R.id.searchAppointmentRecycler);
-                //departmentsRecycler.setHasFixedSize(true);
 
                 departmentAdapter = new departmentAdapter(departments);
                 departmentLayoutManager = new LinearLayoutManager(getApplicationContext());

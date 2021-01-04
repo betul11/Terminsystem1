@@ -50,7 +50,10 @@ public class academicLoginActivity extends AppCompatActivity {
                 counter++;
             }
             if (counter == 1) {
-                System.out.println("ACADEMIC FOUND");
+                // entered if an academic who has the email and password specified by the user was found
+                // meaning that the login information were correct
+
+
                 String redirecting = getString(R.string.Redirecting);
                 Toast.makeText(getApplicationContext(), redirecting, Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(this, AcademicHomeScreenActivity.class);
@@ -58,9 +61,11 @@ public class academicLoginActivity extends AppCompatActivity {
 
                 startActivity(i);
             } else {
-                System.out.println("ACADEMIC NOT FOUND");
+                // entered if the no such academic user was found
+
                 String detailsCorrectly = getString(R.string.detailsCorrectly);
-                Toast.makeText(getApplicationContext(),detailsCorrectly , Toast.LENGTH_SHORT).show(); //(inputEmail.isEmpty() || inputPassword.isEmpty())
+                // error message is displayed
+                Toast.makeText(getApplicationContext(),detailsCorrectly , Toast.LENGTH_SHORT).show();
 
             }
         } catch (SQLException e) {

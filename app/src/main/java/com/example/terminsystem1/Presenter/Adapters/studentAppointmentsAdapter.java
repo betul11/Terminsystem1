@@ -22,6 +22,7 @@ public class studentAppointmentsAdapter extends RecyclerView.Adapter <studentApp
     database db = new database();
 
     public interface onItemClickListener{
+        // to be implemented in activity class
         void onItemClick (int position) throws SQLException;
     }
     public void setOnItemClickListener (onItemClickListener listener){
@@ -65,6 +66,7 @@ public class studentAppointmentsAdapter extends RecyclerView.Adapter <studentApp
     @NonNull
     @Override
     public studentAppointmentsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // inflated view (student appointment card) for recycling
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.student_appointment,parent,false);
         studentAppointmentsViewHolder fvh = new studentAppointmentsViewHolder(v,studentAppointmentsListener);
@@ -73,6 +75,8 @@ public class studentAppointmentsAdapter extends RecyclerView.Adapter <studentApp
 
     @Override
     public void onBindViewHolder(@NonNull studentAppointmentsViewHolder holder, int position) {
+        // new unused view holders filled with the updated following data:
+
         appointment currentAppointment = studentAppointmentsArrayList.get(position);
         int academicID = currentAppointment.getAppointmentAcademicID();
         String academicName = "adapter";
@@ -90,6 +94,7 @@ public class studentAppointmentsAdapter extends RecyclerView.Adapter <studentApp
         holder.appointmentDateText.setText(currentAppointment.getAppointmentDate().toString());
         holder.appointmentStatusText.setText(currentAppointment.getAppointmentStatus());
         holder.appointmentTimeText.setText(currentAppointment.getAppointmentTime());
+        // int position refers to the position of the current card
 
 
     }

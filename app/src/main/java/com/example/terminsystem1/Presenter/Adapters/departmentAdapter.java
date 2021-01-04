@@ -23,6 +23,7 @@ public class departmentAdapter extends RecyclerView.Adapter <departmentAdapter.d
         void onItemClick (int position) throws SQLException, ClassNotFoundException;
     }
     public void setOnItemClickListener (departmentAdapter.onItemClickListener listener){
+        //to be implemented in activity class
         departmentListener = listener;
     }
 
@@ -57,6 +58,8 @@ public class departmentAdapter extends RecyclerView.Adapter <departmentAdapter.d
     @NonNull
     @Override
     public departmentAdapter.departmentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+      // inflated view
+        // to be used in RecyclerView
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.faculty_example,parent,false);
         departmentAdapter.departmentViewHolder dvh = new departmentAdapter.departmentViewHolder(v,departmentListener);
         return dvh;
@@ -64,8 +67,12 @@ public class departmentAdapter extends RecyclerView.Adapter <departmentAdapter.d
 
     @Override
     public void onBindViewHolder(@NonNull departmentAdapter.departmentViewHolder holder, int position) {
+        // new unused view holders (cards) filled with the updated following data:
+
         department currentDepartment = departmentArrayList.get(position);
         holder.departmentNameText.setText(currentDepartment.getDepartmentName());
+        // int position refers to the position of the current card
+
     }
 
     @Override

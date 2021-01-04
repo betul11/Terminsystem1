@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void studentLogin(View view) throws SQLException, ClassNotFoundException {
+        // studentLogin button is clicked
 
            Intent i = new Intent(this, studentLoginActivity.class);
                     startActivity(i);
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void academicLogin(View view) throws SQLException, ClassNotFoundException {
+        //academicLogin button is clicked
 
         Intent i = new Intent(this, academicLoginActivity.class);
         startActivity(i);

@@ -54,12 +54,14 @@ public class studentMyAppointmentsActivity extends AppCompatActivity {
         }
 
         if(myAppointments.isEmpty()){
+            // entered if the student user has no upcoming appointments
             emptyText = findViewById(R.id.no_appointments_to_show);
             emptyText.setVisibility(View.VISIBLE);
 
         }
         else
         {
+            // list appointments in RecyclerView
         studentAppointmentsRecycler = findViewById(R.id.studentMyAppointmentsRecycler);
         studentAppointmentsRecycler.setVisibility(View.VISIBLE);
         studentAppointmentsLayoutManager = new LinearLayoutManager(this);

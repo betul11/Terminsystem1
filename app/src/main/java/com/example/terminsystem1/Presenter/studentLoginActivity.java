@@ -52,17 +52,20 @@ public class studentLoginActivity extends AppCompatActivity {
                 counter++;
             }
             if (counter == 1) {
-                System.out.println("STUDENT FOUND");
+
+                // entered if a student who has the email and password specified by the user was found
+                // meaning that the login information were correct
                 String redirecting = getString(R.string.Redirecting) ;
                 Toast.makeText(getApplicationContext(), redirecting, Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(this, StudentHomeScreenActivity.class);
                 i.putExtra(EXTRA_NAME, inputEmail);
                 startActivity(i);
             } else {
-                System.out.println("STUDENT NOT FOUND");
+                // entered if the no such student user was found
                 String detailsIncorrect = getString(R.string.detailsCorrectly);
+                // error message is displayed
 
-                Toast.makeText(getApplicationContext(), detailsIncorrect, Toast.LENGTH_SHORT).show(); //(inputEmail.isEmpty() || inputPassword.isEmpty())
+                Toast.makeText(getApplicationContext(), detailsIncorrect, Toast.LENGTH_SHORT).show();
             }
         } catch (SQLException e) {
             e.printStackTrace();

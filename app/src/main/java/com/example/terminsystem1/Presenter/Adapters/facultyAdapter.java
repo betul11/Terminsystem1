@@ -19,6 +19,7 @@ public class facultyAdapter extends RecyclerView.Adapter <facultyAdapter.faculty
    private ArrayList<faculty> facultyArrayList;
    private onItemClickListener facultyListener;
    public interface onItemClickListener{
+       // to be implemented in activity class
        void onItemClick (int position) throws SQLException;
    }
    public void setOnItemClickListener (onItemClickListener listener){
@@ -56,6 +57,8 @@ public class facultyAdapter extends RecyclerView.Adapter <facultyAdapter.faculty
     @NonNull
     @Override
     public facultyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+       // inflated view (card)
+        // to be used in RecyclerView
 View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.faculty_example,parent,false);
     facultyViewHolder fvh = new facultyViewHolder(v,facultyListener);
     return fvh;
@@ -63,8 +66,11 @@ View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.faculty_examp
 
     @Override
     public void onBindViewHolder(@NonNull facultyViewHolder holder, int position) {
-      faculty currentFaculty = facultyArrayList.get(position);
+        // new unused view holders filled with the updated following data:
+
+        faculty currentFaculty = facultyArrayList.get(position);
       holder.facultyNameText.setText(currentFaculty.getFacultyName());
+      // int position refers to the position of the current card
     }
 
     @Override

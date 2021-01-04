@@ -50,6 +50,8 @@ public class dateSendingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                String timetext = timeText.getText().toString();
+
+               // check if time input is empty:
               if(timetext.matches("")){
                   String timeMissing = getString(R.string.time_missing);
                   Toast.makeText(dateSendingActivity.this, timeMissing, Toast.LENGTH_LONG).show();
@@ -61,6 +63,8 @@ public class dateSendingActivity extends AppCompatActivity {
                 int year = picker.getYear();
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, day);
+
+                // show error message if the specified day is Saturday or Sunday:
                 if((calendar.get(Calendar.DAY_OF_WEEK)==Calendar.SATURDAY) ||
                         (calendar.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY)){
                     String notBusinessDay = getString(R.string.not_business_day);
@@ -82,11 +86,14 @@ public class dateSendingActivity extends AppCompatActivity {
                 try {
                     int result = db.getAvailableAppointment(academicID,userStudentID,date,time);
                     if(result==1){
+                      //entered if no other appointments with the same date and time exists
+
                         String requestSent = getString(R.string.appointment_request_sent);
 
                         Toast.makeText(dateSendingActivity.this, requestSent , Toast.LENGTH_LONG).show();
 
                     }else if(result==2){
+                        //entered if an appointment with the same date and time already exits.
                         String noAvailableAppointment = getString(R.string.no_available_appointment);
                         Toast.makeText(dateSendingActivity.this, noAvailableAppointment , Toast.LENGTH_LONG).show();
 

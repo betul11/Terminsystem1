@@ -24,6 +24,7 @@ public class academicAppointmentsAdapter extends RecyclerView.Adapter <academicA
     database db = new database();
 
     public interface onItemClickListener{
+        // listener functions to be implemented in activity class
         void onItemClick (int position) throws SQLException;
         void onAcceptClick (int position) throws SQLException, ClassNotFoundException;
         void onDenyClick (int position) throws SQLException, ClassNotFoundException;
@@ -118,6 +119,7 @@ public class academicAppointmentsAdapter extends RecyclerView.Adapter <academicA
     @NonNull
     @Override
     public academicAppointmentsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // inflated view (academic appointment card) for recycling
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.academic_appointment,parent,false);
         academicAppointmentsViewHolder avh = new academicAppointmentsViewHolder(v,academicAppointmentsListener);
         return avh;
@@ -125,6 +127,8 @@ public class academicAppointmentsAdapter extends RecyclerView.Adapter <academicA
 
     @Override
     public void onBindViewHolder(@NonNull academicAppointmentsViewHolder holder, int position) {
+
+        // new unused view holders filled with the updated following data:
         appointment currentAppointment = academicAppointmentsArrayList.get(position);
         int studentID = currentAppointment.getAppointmentStudentID();
         if(currentAppointment.getAppointmentStatus().equals("accepted")){
@@ -151,9 +155,7 @@ public class academicAppointmentsAdapter extends RecyclerView.Adapter <academicA
         holder.appointmentStudentNumberText.setText(stringStudentNumber);
         holder.appointmentTimeText.setText(currentAppointment.getAppointmentTime());
 
-
-
-
+        // int position refers to the position of the current card
 
     }
 

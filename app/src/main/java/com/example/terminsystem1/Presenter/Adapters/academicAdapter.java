@@ -23,6 +23,8 @@ public class academicAdapter extends RecyclerView.Adapter <academicAdapter.acade
         void onItemClick (int position) throws SQLException, ClassNotFoundException;
     }
     public void setOnItemClickListener (academicAdapter.onItemClickListener listener){
+        // listener function to be implemented in activity class
+
         academicListener = listener;
     }
 
@@ -57,6 +59,9 @@ public class academicAdapter extends RecyclerView.Adapter <academicAdapter.acade
     @NonNull
     @Override
     public academicAdapter.academicViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // inflated view (academic objects) using the faculty_example template
+        // to be used in RecyclerView
+
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.faculty_example,parent,false);
         academicAdapter.academicViewHolder avh = new academicAdapter.academicViewHolder(v,academicListener);
         return avh;
@@ -64,8 +69,11 @@ public class academicAdapter extends RecyclerView.Adapter <academicAdapter.acade
 
     @Override
     public void onBindViewHolder(@NonNull academicAdapter.academicViewHolder holder, int position) {
+        // new unused view holders filled with the updated following data:
+
         academic currentAcademic = academicArrayList.get(position);
         holder.academicNameText.setText(currentAcademic.getAcademicName());
+        // int position refers to the position of the current card
     }
 
     @Override
