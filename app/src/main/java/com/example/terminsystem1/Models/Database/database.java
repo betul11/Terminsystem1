@@ -161,7 +161,6 @@ public class database  {
 
     }
 
-
         public ArrayList<faculty> getAllFaculties () throws SQLException, ClassNotFoundException {
         // list faculties
             String query = "SELECT * FROM fakultaet";

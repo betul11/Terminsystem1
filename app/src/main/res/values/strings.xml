@@ -29,7 +29,7 @@
     <string name="Redirecting">Redirecting ...</string>
     <string name="detailsCorrectly">Please enter all the details correctly!</string>
     <string name="time_missing">Time was not entered</string>
-    <string name="not_business_day">"The specified date is not a business day "</string>
+    <string name="not_business_day">The specified date is not a business day </string>
     <string name="appointment_request_sent">Appointment request is sent</string>
     <string name="no_available_appointment">No available appointments found! Try a different date or time</string>
 </resources>

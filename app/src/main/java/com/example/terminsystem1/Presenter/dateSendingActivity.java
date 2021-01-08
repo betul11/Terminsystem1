@@ -1,13 +1,13 @@
 package com.example.terminsystem1.Presenter;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.terminsystem1.Models.Database.database;
 import com.example.terminsystem1.R;
@@ -24,7 +24,7 @@ public class dateSendingActivity extends AppCompatActivity {
     DatePicker picker;
     EditText timeText;
     Button send_date_button;
-    String time;
+
     static final String EXTRA_NAME = "studentEmail";
     static final String ACADEMIC_ID = "academicID";
     int academicID;
@@ -84,7 +84,7 @@ public class dateSendingActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 try {
-                    int result = db.getAvailableAppointment(academicID,userStudentID,date,time);
+                    int result = db.getAvailableAppointment(academicID,userStudentID,date,timetext);
                     if(result==1){
                       //entered if no other appointments with the same date and time exists
 

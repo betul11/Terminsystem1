@@ -1,5 +1,7 @@
 package com.example.terminsystem1.Models.Database;
 
+import com.example.terminsystem1.Models.student;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,8 +33,14 @@ public class databaseTest {
     @Mock
     Connection mockConnection;
 
+    @Mock
+    student user;
     @InjectMocks database db;
 
+
+    /* Github link:
+     * https://github.com/betul11/Terminsystem1
+     * */
 
     @Before
     public void setUp() throws Exception {
@@ -59,6 +67,14 @@ public class databaseTest {
         String email = "e170503109@stud.tau.edu.tr";
         String password = "test";
         assertThat(db.checkIfStudentPasswordIsCorrect(email, password)).isTrue();
+
+    }
+
+    @Test
+    public void studentLogin() throws SQLException, ClassNotFoundException {
+        user = new student("e170503109@stud.tau.edu.tr", "test");
+        rs = db.studentLogin(user);
+        assertThat(rs.next());
 
     }
 
